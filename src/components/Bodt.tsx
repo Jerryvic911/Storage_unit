@@ -9,7 +9,7 @@ const Body: React.FC = () => {
   const handleConnectWallet = async () => {
     
       console.error("Error connecting wallet:");
-    
+    navigate("/Dashboard")
   };
   
 

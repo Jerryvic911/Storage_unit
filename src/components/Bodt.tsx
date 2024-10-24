@@ -1,0 +1,65 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import './Body.css'; // Ensure this CSS file is created for styling
+
+const Body: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleConnectWallet = () => {
+    // Logic to connect wallet goes here
+    console.log("Connecting wallet...");
+  };
+
+  const handleLearnMore = () => {
+    navigate('/learn-more'); // Navigate to a page with more information
+  };
+
+  return (
+    <div className="welcome-container">
+      <motion.h1 
+        initial={{ opacity: 0, translateY: -20 }} 
+        animate={{ opacity: 1, translateY: 0 }} 
+        transition={{ duration: 0.6 }}
+      >
+        Welcome to Our Web3 Vault!
+      </motion.h1>
+
+      <motion.p 
+        initial={{ opacity: 0, translateY: -20 }} 
+        animate={{ opacity: 1, translateY: 0 }} 
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        Securely store and manage your digital assets with our decentralized vault.
+        Experience the power of Web3 and take control of your financial future.
+      </motion.p>
+
+      <motion.div 
+        className="button-container"
+        initial={{ opacity: 0, translateY: 20 }} 
+        animate={{ opacity: 1, translateY: 0 }} 
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <motion.button 
+          onClick={handleConnectWallet} 
+          className="welcome-btn"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Connect Wallet
+        </motion.button>
+
+        <motion.button 
+          onClick={handleLearnMore} 
+          className="welcome-btn"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Learn More
+        </motion.button>
+      </motion.div>
+    </div>
+  );
+};
+
+export default Body;

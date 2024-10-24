@@ -6,10 +6,12 @@ import './Body.css'; // Ensure this CSS file is created for styling
 const Body: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleConnectWallet = () => {
-    // Logic to connect wallet goes here
-    console.log("Connecting wallet...");
+  const handleConnectWallet = async () => {
+    
+      console.error("Error connecting wallet:");
+    
   };
+  
 
   const handleLearnMore = () => {
     navigate('/learn-more'); // Navigate to a page with more information

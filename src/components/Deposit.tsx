@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './Deposit.css'; // Ensure this CSS file is created for styling
 
 const Deposit: React.FC = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [assetType, setAssetType] = useState<string>('Ethereum'); // Default asset type
   const [amount, setAmount] = useState<number | string>(''); // Amount to deposit
   const [message, setMessage] = useState<string>(''); // Message for user feedback
@@ -13,12 +15,15 @@ const Deposit: React.FC = () => {
     }
 
     // Logic to handle the deposit goes here
-    // This is a placeholder for actual deposit logic
     console.log(`Depositing ${amount} ${assetType}...`);
     setMessage(`Successfully deposited ${amount} ${assetType}!`);
     
     // Reset fields after deposit
     setAmount('');
+  };
+
+  const handleReturn = () => {
+    navigate('/dashboard'); // Navigate back to the dashboard
   };
 
   return (
@@ -50,6 +55,11 @@ const Deposit: React.FC = () => {
         Deposit
       </button>
       {message && <p className="feedback-message">{message}</p>}
+
+      {/* Return Button */}
+      <button onClick={handleReturn} className="return-btn">
+        Return to Dashboard
+      </button>
     </div>
   );
 };

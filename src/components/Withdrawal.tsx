@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Withdrawal.css'; // Ensure this CSS file is created for styling
 
 const Withdrawal: React.FC = () => {
+  const navigate = useNavigate();
   const [assetType, setAssetType] = useState<string>('Ethereum'); // Default asset type
   const [amount, setAmount] = useState<number | string>(''); // Amount to withdraw
   const [message, setMessage] = useState<string>(''); // Message for user feedback
@@ -20,6 +22,11 @@ const Withdrawal: React.FC = () => {
     // Reset fields after withdrawal
     setAmount('');
   };
+
+  const handleReturn = () => {
+    navigate('/dashboard'); // Navigate back to the dashboard
+  };
+
 
   return (
     <div className="withdrawal-container">
@@ -50,7 +57,9 @@ const Withdrawal: React.FC = () => {
         Withdraw
       </button>
       {message && <p className="feedback-message">{message}</p>}
-      
+      <button onClick={handleReturn} className="return-btn">
+        Return to Dashboard
+      </button>
     </div>
   );
 };

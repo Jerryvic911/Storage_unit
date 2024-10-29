@@ -4,9 +4,11 @@ import Dashboard from './components/DashBoard';
 import Deposit from './components/Deposit';
 import Withdrawal from './components/Withdrawal';
 import TransactionHistory from './components/Transaction';
+import { StarknetProvider } from "./components/Provider";
 
 function App() {
   return (
+    <StarknetProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Body />} />
@@ -16,7 +18,12 @@ function App() {
         <Route path="/Transaction" element={<TransactionHistory />} />
       </Routes>
     </Router>
+    </StarknetProvider>
   );
 }
 
 export default App;
+
+
+
+ 

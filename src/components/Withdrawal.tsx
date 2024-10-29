@@ -41,7 +41,7 @@ const Withdrawal: React.FC = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="amount" className="block text-sm font-medium text-white text-gray-700">Amount:</label>
+          <label htmlFor="amount" className="block text-sm font-medium text-white">Amount:</label>
           <input
             type="number"
             id="amount"

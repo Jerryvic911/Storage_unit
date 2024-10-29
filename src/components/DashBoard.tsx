@@ -17,12 +17,12 @@ const DashBoard: React.FC = () => {
     <div className="min-h-screen bg-white flex flex-col items-center">
       {/* Header with animation */}
       <motion.header
-        className="w-full bg-[#0a100d] p-4 text-white text-center text-xl font-bold"
+        className="w-full bg-[#0a100d] p-4 text-white text-center uppercase text-xl font-bold"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
       >
-        {username ? `${username}'s  Dashboard` : ' Dashboard'}
+        {username ? `${username}'s gruft Vault Dashboard` : ' gruft Vault Dashboard'}
       </motion.header>
 
       {/* Vault Balance with animation */}

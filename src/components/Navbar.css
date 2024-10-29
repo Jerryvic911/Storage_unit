@@ -3,7 +3,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #007bff; /* Primary color */
+    background-color: #0a100d; /* Primary color */
     color: white; /* Text color */
     display: flex;
     justify-content: space-around; /* Space items evenly */
@@ -44,7 +44,7 @@
 .bottom-nav .icon {
     width: 24px;
     height: 24px;
-    stroke: #333; /* Color for the icons */
+    stroke: white; /* Color for the icons */
 }
 
 .bottom-nav a {

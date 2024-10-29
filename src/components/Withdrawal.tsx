@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Withdrawal.css'; // Ensure this CSS file is created for styling
 
 const Withdrawal: React.FC = () => {
   const navigate = useNavigate();
-  const [assetType, setAssetType] = useState<string>('Ethereum'); // Default asset type
-  const [amount, setAmount] = useState<number | string>(''); // Amount to withdraw
-  const [message, setMessage] = useState<string>(''); // Message for user feedback
+  const [assetType, setAssetType] = useState<string>('Ethereum');
+  const [amount, setAmount] = useState<number | string>('');
+  const [message, setMessage] = useState<string>('');
 
   const handleWithdrawal = async () => {
     if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
@@ -14,52 +13,53 @@ const Withdrawal: React.FC = () => {
       return;
     }
 
-    // Logic to handle the withdrawal goes here
-    // This is a placeholder for actual withdrawal logic
     console.log(`Withdrawing ${amount} ${assetType}...`);
     setMessage(`Successfully withdrew ${amount} ${assetType}!`);
     
-    // Reset fields after withdrawal
     setAmount('');
   };
 
   const handleReturn = () => {
-    navigate('/dashboard'); // Navigate back to the dashboard
+    navigate('/dashboard');
   };
 
-
   return (
-    <div className="withdrawal-container">
-      <h1>Withdraw Assets</h1>
-      <div className="form-group">
-        <label htmlFor="assetType">Select Asset Type:</label>
-        <select
-          id="assetType"
-          value={assetType}
-          onChange={(e) => setAssetType(e.target.value)}
-        >
-          <option value="Ethereum">Ethereum</option>
-          <option value="Bitcoin">Bitcoin</option>
-          {/* Add more asset options as needed */}
-        </select>
+    <div className="min-h-screen flex items-center justify-center bg-[#1E1E3E] text-white  p-6">
+      <div className="bg-black rounded-lg shadow-md p-8 w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-4">Withdraw Assets</h1>
+        <div className="mb-4">
+          <label htmlFor="assetType" className="block text-sm font-medium text-white ">Select Asset Type:</label>
+          <select
+            id="assetType"
+            value={assetType}
+            onChange={(e) => setAssetType(e.target.value)}
+            className="mt-1 block w-full border border-gray-300 text-black rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+          >
+            <option value="Ethereum">Ethereum</option>
+            <option value="Bitcoin">Bitcoin</option>
+            {/* Add more asset options as needed */}
+          </select>
+        </div>
+        <div className="mb-4">
+          <label htmlFor="amount" className="block text-sm font-medium text-white text-gray-700">Amount:</label>
+          <input
+            type="number"
+            id="amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Enter amount"
+            className="mt-1 block w-full border border-gray-300 text-black rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
+          />
+        </div>
+        <button onClick={handleWithdrawal} className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
+          Withdraw
+        </button>
+        {message && <p className="mt-2 text-green-600">{message}</p>}
+
+        <button onClick={handleReturn} className="mt-4 w-full bg-gray-300 text-gray-700 font-semibold py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-300">
+          Return to Dashboard
+        </button>
       </div>
-      <div className="form-group">
-        <label htmlFor="amount">Amount:</label>
-        <input
-          type="number"
-          id="amount"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          placeholder="Enter amount"
-        />
-      </div>
-      <button onClick={handleWithdrawal} className="withdrawal-btn">
-        Withdraw
-      </button>
-      {message && <p className="feedback-message">{message}</p>}
-      <button onClick={handleReturn} className="return-btn">
-        Return to Dashboard
-      </button>
     </div>
   );
 };

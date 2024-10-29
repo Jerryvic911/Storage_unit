@@ -14,7 +14,7 @@ const Body: React.FC = () => {
   
 
   const handleLearnMore = () => {
-    navigate('/learn-more'); // Navigate to a page with more information
+    navigate('/'); // Navigate to a page with more information
   };
 
   return (
@@ -23,14 +23,16 @@ const Body: React.FC = () => {
         initial={{ opacity: 0, translateY: -20 }} 
         animate={{ opacity: 1, translateY: 0 }} 
         transition={{ duration: 0.6 }}
+        className=' capitalize font-bold'
       >
-        Welcome to Our Web3 Vault!
+        Welcome to gruft Vault!
       </motion.h1>
 
       <motion.p 
         initial={{ opacity: 0, translateY: -20 }} 
         animate={{ opacity: 1, translateY: 0 }} 
         transition={{ duration: 0.6, delay: 0.2 }}
+        className=' text-lg font-medium'
       >
         Securely store and manage your digital assets with our decentralized vault.
         Experience the power of Web3 and take control of your financial future.

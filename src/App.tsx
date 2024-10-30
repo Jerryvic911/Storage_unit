@@ -4,9 +4,13 @@ import Dashboard from './components/DashBoard';
 import Deposit from './components/Deposit';
 import Withdrawal from './components/Withdrawal';
 import TransactionHistory from './components/Transaction';
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 function App() {
+ const activeChain = "ethereum"
+
   return (
+    <ThirdwebProvider activeChain={activeChain}> 
     <Router>
       <Routes>
         <Route path="/" element={<Body />} />
@@ -16,6 +20,7 @@ function App() {
         <Route path="/Transaction" element={<TransactionHistory />} />
       </Routes>
     </Router>
+    </ThirdwebProvider>
   );
 }
 

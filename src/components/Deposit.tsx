@@ -42,7 +42,16 @@ const Deposit: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#1E1E3E] text-white p-6">
       <div className="bg-black rounded-lg shadow-md p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-4">Deposit Assets</h1>
+        <div className='flex  items-center gap-5'>
+          <button onClick={handleReturn} className="mt-5 w-[50px] h-[30px] pl-3 bg-gray-300 text-gray-700 font-semibold py-2 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6 relative bottom-1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+            </svg>
+
+          </button>
+          <h1 className="text-2xl font-bold mb-4 pt-6">Deposit Assets</h1>
+        </div>
+
         <div className="mb-4">
           <label htmlFor="assetType" className="block text-sm font-medium">Select Asset Type:</label>
           <select
@@ -92,9 +101,7 @@ const Deposit: React.FC = () => {
         </button>
         {message && <p className="mt-2 text-green-600">{message}</p>}
 
-        <button onClick={handleReturn} className="mt-4 w-full bg-gray-300 text-gray-700 font-semibold py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:ring focus:ring-gray-300">
-          Return to Dashboard
-        </button>
+
       </div>
     </div>
   );

@@ -24,9 +24,9 @@ const DashBoard: React.FC = () => {
 
       // Add transaction history entry
       const newTransaction = {
-        id: transactionHistory.length + 1, // New unique ID
+        id: transactionHistory.length + 1,
         type: 'Break Lock',
-        amount: `- $${lockedAmount.toLocaleString()}`,
+        amount: `- ${lockedAmount.toLocaleString()}`,
         className: 'text-red-500',
       };
       setTransactionHistory([...transactionHistory, newTransaction]);
@@ -39,10 +39,13 @@ const DashBoard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center">
+    <motion.div 
+      className={`min-h-screen flex flex-col items-center ${activeStatus ? 'bg-[#e5e5e5]' : 'bg-white'}`} 
+      
+    >
       {/* Header */}
       <motion.header
-        className="w-full flex pl-20 items-center bg-[black] text-white text-center uppercase text-xl font-bold"
+        className="w-full flex pl-20 items-center bg-[black] text-white  uppercase text-xl font-bold"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
@@ -123,29 +126,31 @@ const DashBoard: React.FC = () => {
       {message && <p className="mt-4 text-green-600">{message}</p>}
 
       {/* Transaction History */}
-   {/* Transaction History */}
-<motion.div
-  className="mt-6 w-11/12 bg-[#1E1E3E] rounded-xl shadow-md p-4 overflow-scroll"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1.5 }}
->
-  <h3 className="text-white text-lg mb-4">Transaction History</h3>
-  <ul>
-    {transactionHistory.slice().reverse().map(transaction => (
-      <li key={transaction.id} className="flex justify-between py-2">
-        <span className="text-white">{transaction.type}</span>
-        <span className={transaction.className}>{transaction.amount}</span>
-      </li>
-    ))}
-  </ul>
-</motion.div>
 
+      <div className='relative top-10'>
+      <h3 className="text-black  mb-4 font-bold text-xl ">Transaction History</h3>
+      </div>
+      <motion.div
+        className="mt-6 w-[90%] h-[160px] bg-[#1E1E3E] rounded-xl shadow-md p-4 overflow-scroll"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
+
+        <ul>
+          {transactionHistory.slice().reverse().map(transaction => (
+            <li key={transaction.id} className="flex justify-between py-2">
+              <span className="text-white">{transaction.type}</span>
+              <span className={transaction.className}>{transaction.amount}</span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
 
       <div className='pt-10'>
         <BottomNav />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

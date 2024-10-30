@@ -26,6 +26,7 @@ export const VaultProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setLockPeriod(period);
     setActiveStatus(true);
   };
+  
 
   const getLockedAmount = () => {
     return lockedAmount; // Return the current locked amount

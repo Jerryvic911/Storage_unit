@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Body.css'; // Ensure this CSS file is created for styling
+import Logo from "../assets/Logo.png"
 
 const Body: React.FC = () => {
   const navigate = useNavigate();
@@ -19,6 +20,14 @@ const Body: React.FC = () => {
 
   return (
     <div className="welcome-container">
+         <div className="relative inline-flex items-center">
+  <motion.div
+    className="absolute inset-0 bg-blue-500 rounded-full opacity-50 blur-md"
+    animate={{ scale: [1, 1.1, 1] }} // Beating effect
+    transition={{ duration: 1.5, repeat: Infinity }} // Repeat infinitely
+  />
+  <img src={Logo} className="relative h-[100px] w-[100px] z-10 object-cover" alt="Image" />
+</div>
       <motion.h1 
         initial={{ opacity: 0, translateY: -20 }} 
         animate={{ opacity: 1, translateY: 0 }} 

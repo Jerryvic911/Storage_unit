@@ -39,7 +39,15 @@ const DashBoard: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
       >
-        <img src={Logo} className="h-[70px] w-[70px]" alt="Image" />
+        <div className="relative inline-flex items-center">
+  <motion.div
+    className="absolute inset-0 bg-blue-500 rounded-full opacity-50 blur-md"
+    animate={{ scale: [1, 1.1, 1] }} // Beating effect
+    transition={{ duration: 1.5, repeat: Infinity }} // Repeat infinitely
+  />
+  <img src={Logo} className="relative h-[70px] w-[70px] z-10" alt="Image" />
+</div>
+
         {username ? `${username}'s gruft Vault ` : ' gruft Vault '}
       </motion.header>
 
@@ -51,7 +59,7 @@ const DashBoard: React.FC = () => {
         transition={{ duration: 1.5 }}
       >
         <div className="mt-6 p-4 w-11/12 bg-[#1E1E3E] rounded-xl shadow-md text-center">
-        <h2 className="text-lg">Vault Balance: ${balance.toLocaleString()}</h2>
+        <h2 className="text-lg text-white">Vault Balance: ${balance.toLocaleString()}</h2>
         {activeStatus && (
           <div className="mt-4">
             <p className="text-white">Lock Time: {lockTime}</p>

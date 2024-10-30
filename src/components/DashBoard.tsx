@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion'; // Importing motion from framer-motion
+import { motion } from 'framer-motion'; 
 import BottomNav from './Navbar';
+import Logo from "../assets/logo.png"
+import { useVault } from './VaultContext';
+
 
 const transactionHistory = [
   { id: 1, type: 'Deposit', amount: '+ $500', className: 'text-green-500' },
@@ -10,54 +13,83 @@ const transactionHistory = [
 ];
 
 const DashBoard: React.FC = () => {
+  const { balance, lockTime, lockPeriod, activeStatus } = useVault(); 
   const location = useLocation();
-  const { username } = location.state as { username: string } || { username: '' }; // Extract username
+  const { username } = location.state as { username: string } || { username: '' };
+
+  // const [lockedAmount, setLockedAmount] = useState<number>(0);
+  // const [lockTime, setLockTime] = useState<string>('');
+  // const [lockPeriod, setLockPeriod] = useState<string>('');
+  // const [activeStatus, setActiveStatus] = useState<boolean>(false);
+
+  // This function can be called with actual data from a form in a real app
+  // const handleLockAmount = () => {
+  //   setLockedAmount(12500); // Test amount
+  //   setLockTime('2023-12-31'); // Test lock time
+  //   setLockPeriod('6 months'); // Test lock period
+  //   setActiveStatus(true); // Mark as active
+  // };
 
   return (
     <div className="min-h-screen bg-white flex flex-col items-center">
-      {/* Header with animation */}
+      {/* Header */}
       <motion.header
-        className="w-full bg-[#0a100d] p-4 text-white text-center uppercase text-xl font-bold"
+        className="w-full flex pl-20 items-center bg-[black] text-white text-center uppercase text-xl font-bold"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
       >
-        {username ? `${username}'s gruft Vault Dashboard` : ' gruft Vault Dashboard'}
+        <img src={Logo} className="h-[70px] w-[70px]" alt="Image" />
+        {username ? `${username}'s gruft Vault ` : ' gruft Vault '}
       </motion.header>
 
-      {/* Vault Balance with animation */}
+      {/* Vault Balance */}
       <motion.div
         className="mt-6 p-4 w-11/12 bg-[#1E1E3E] rounded-xl shadow-md text-center"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 1.5 }}
       >
-        <h2 className="text-white text-lg">Vault Balance</h2>
-        <p className="text-2xl font-semibold text-green-500">$12,500</p>
+        <div className="mt-6 p-4 w-11/12 bg-[#1E1E3E] rounded-xl shadow-md text-center">
+        <h2 className="text-lg">Vault Balance: ${balance.toLocaleString()}</h2>
+        {activeStatus && (
+          <div className="mt-4">
+            <p className="text-white">Lock Time: {lockTime}</p>
+            <p className="text-white">Lock Period: {lockPeriod}</p>
+            <p className="text-white">Status: {activeStatus ? 'Active' : 'Inactive'}</p>
+          </div>
+        )}
+      </div>
+
+
+      
       </motion.div>
 
-      {/* Action Buttons with animations */}
+      {/* Action Buttons */}
       <div className="flex flex-col">
         <div className="grid grid-cols-2 justify-around mt-6 gap-5">
-          <Link to="/Deposit">
+        <Link to="/Deposit">
             <motion.button
-              className="bg-[#0a100d]  text-white rounded-lg shadow-lg w-[100%] h-[40px] mx-2"
-              whileHover={{ scale: 1.05 }} // Animation on hover
-              whileTap={{ scale: 0.95 }} // Animation on tap
+              className="bg-[#0a100d] text-white rounded-lg shadow-lg w-[100%] h-[40px] mx-2"
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }} 
             >
               Lock
             </motion.button>
           </Link>
+
           <Link to="/Withdraw">
             <motion.button
               className="bg-[#0a100d] text-white rounded-lg shadow-lg w-[100%] h-[40px] mx-2"
-              whileHover={{ scale: 1.05 }} // Animation on hover
-              whileTap={{ scale: 0.95 }} // Animation on tap
+              whileHover={{ scale: 1.05 }} 
+              whileTap={{ scale: 0.95 }} 
             >
               Withdraw
             </motion.button>
           </Link>
         </div>
+
+        {/* Additional Action Buttons */}
         <div className="grid grid-cols-2 justify-around mt-6 gap-5">
           <motion.button
             className="bg-[#0a100d] text-white p-2 rounded-lg shadow-lg w-[100%] h-[40px] mx-2"
@@ -67,7 +99,7 @@ const DashBoard: React.FC = () => {
             Break Lock
           </motion.button>
           <motion.button
-            className="bg-[#0a100d]  text-white p-2 rounded-lg shadow-lg w-[100%] h-[40px] mx-2"
+            className="bg-[#0a100d] text-white p-2 rounded-lg shadow-lg w-[100%] h-[40px] mx-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -76,7 +108,7 @@ const DashBoard: React.FC = () => {
         </div>
       </div>
 
-      {/* Transaction History with animation */}
+      {/* Transaction History */}
       <motion.div
         className="mt-6 w-11/12 bg-[#1E1E3E] rounded-xl shadow-md p-4 overflow-scroll"
         initial={{ opacity: 0 }}
@@ -94,9 +126,9 @@ const DashBoard: React.FC = () => {
         </ul>
       </motion.div>
 
-    <div>
-    <BottomNav />
-    </div>
+      <div>
+        <BottomNav />
+      </div>
     </div>
   );
 };

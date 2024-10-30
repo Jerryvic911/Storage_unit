@@ -61,7 +61,8 @@ const Deposit: React.FC = () => {
             className="mt-1 block w-full border border-gray-300 text-black rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500"
           >
             <option value="Ethereum" className='text-black'>Ethereum</option>
-            <option value="Bitcoin" className='text-black'>Bitcoin</option>
+            <option value="Bitcoin" className='text-black'>USDT</option>
+            <option value="Bitcoin" className='text-black'>Strk</option>
           </select>
         </div>
         <div className="mb-4">

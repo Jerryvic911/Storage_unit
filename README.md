@@ -15,6 +15,10 @@ Gruft Vault utilizes Telegram’s mini-app capability to create a seamless in-ap
 Gruft Vault eliminates the complexity often associated with token locking and rewards. By embedding the process directly in Telegram, users enjoy a one-stop experience that allows them to secure tokens and earn Gruft rewards with minimal setup—no need for additional apps or platform switching.
 
 ---
+## Wallet Integration
+
+Gruft Vault is designed to be integrated with the ThirdWeb wallet, which is the wallet for the Gruft token. This integration allows users to easily lock and unlock their tokens, as well as earn rewards. The ThirdWeb wallet is available for download on the Google Play Store and the Apple App Store. In the future, Gruft Vault will integrate with Argent wallet as well.
+
 
 ## Innovative Use Cases and Competitive Advantages
 
